@@ -1,0 +1,101 @@
+What is an argument?,
+We mean something like this:
+1. All humans are mortal.
+2. Socrates is a human.
+3. So, Socrates is mortal.;
+conclusion indicator,a word like “So,” “Thus,”
+or “Therefore.”;
+Standard Form,Any argument where the premises occur in a
+numbered list, separated from the conclusion by a
+line;
+What is the role of the premises and of the conclusion?,
+ expose the logical structure of the author’s
+argument in a way that helps us evaluate it;
+What does it mean for an argument to be valid?,
+the truth of its premises guarantees the truth of its
+conclusion.
+In other words, the truth of its conclusion necessarily
+follows from the truth of its premises.
+It is impossible for a valid argument’s premises to be
+true and its conclusion false.
+
+If an argument is valid:
+This does NOT mean the premises
+are true!
+It only means that IF the premises
+are true, the conclusion MUST be
+true.
+
+Truth is a property of
+tatements (premises,
+onclusions).
+Validity is a property of
+whole arguments.
+;
+To be sound?,
+Soundness is a property of
+whole arguments.
+Soundness = Validity + True Premises!;
+What does it mean for an argument to beg the question? Can an argument that begs the question be valid? Be sound?,
+ an argument begs the question if one or more of its premises relies for its truth on the truth of the conclusion.
+
+ (P1) Killing innocent people is wrong.
+----------------------------------------------------------
+(C) Therefore, killing innocent people is wrong.
+
+this is valid and sound;
+How do deductive and inductive arguments differ? Give an example of each and explain what makes the argument deductive/inductive (we discussed 3 common forms of inductive arguments),
+When an argument is not claimed to be
+valid but is intended only to provide a
+reason that the conclusion is probably
+true, the argument is inductive.
+
+A Deductive argument guarantees the
+truth of its conclusion.
+An Inductive argument establishes its
+conclusion with a high degree of
+probability
+How do evaluate inductive arguments?,
+They are either strong/forceful or weak, depending
+upon the strength of the reasons that they provide for
+their conclusions.
+ When a conclusion is probable given that the premises
+are true, that argument is inductively strong, or
+inductively forceful.
+ Inductive strength comes in degrees.;
+Common Forms of Inductive Arguments,
+- Statistical
+Generalizations
+- Inference to the
+Best
+Explanation
+- Arguments from
+Analogy;
+Statistical Generalizations,
+Arguments wherein we sample part of the population to draw a conclusion
+about the whole are called statistical generalizations.
+Possible problems:
+ Is the sample large enough?
+ Is the sample biased?
+ Is the sampling procedure biased?;
+Inference to the Best Explanation,
+ Involves the free creation of hypotheses that generate
+predictions which can be tested by further observations.
+ We find the best explanation by seeing which hypothesis
+best “fits” all the available evidence.
+ Characteristic of much scientific reasoning.;
+ Arguments from Analogy,
+ Premises – Two things are similar in some respect(s).
+Conclusion – They must also be analogous (similar) in a further respect.
+
+Can Mars support life?
+Well, both the earth and Mars have sunlight, water, a solid
+body, and gravity. Thus, if the Earth can support life, Mars
+probably can as well!
+Mars Life (ML)
+ (ML1) The Earth can support life.
+ (ML2) Both Mars and the Earth have sunlight, water, a solid body,
+and gravity.
+ (ML4) Probably, Mars can support life
+;
+
