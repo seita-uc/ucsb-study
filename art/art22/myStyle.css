@@ -1,0 +1,137 @@
+html,body { height:100%; }
+body {
+    background-color: #B721FF;
+    background-image: url("images/Royal_Heath.jpg");
+    background-size: cover;
+    font-family: 'Cairo', sans-serif;
+}
+@media screen and (max-width: 769px) {
+    body {
+        /*background-size: cover;*/
+        /*background-repeat: no-repeat;*/
+    }
+}
+h1 {
+    color: black;
+    font-size: 35px;
+}
+#main {
+    text-align: center;
+    height: 100%;
+    position: relative;
+}
+header {
+    margin-top: 40px;
+    text-align: center;
+}
+#header-content {
+    width: auto;
+    display: inline-block;
+    padding: 30px 70px 40px 70px;
+    /*border-radius: 5% 5%;*/
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+    margin-right: 200px;
+    vertical-align: middle;
+    transition-duration: 0.4s;
+    /*transition-delay: 1s;*/
+    transition-timing-function: ease-in-out;
+}
+#header-content:hover {
+    background-color: rgb(230,230,230,0.5);
+}
+p {
+    color: white;
+    font-size: 15px;
+}
+#profile-content {
+    padding: auto;
+    text-align: center;
+    /*display: inline-block;*/
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+}
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+}
+.content-wrapper {
+    position: relative;
+    /*width: 100%;*/
+}
+.content-wrapper:before {
+    content:"";
+    display: block;
+    padding-top: 100%;
+}
+#social {
+    color: black;
+    background-color: #E6E6E6;
+    width: 15%;
+    bottom: 30px;
+    height: auto;
+    display: inline-block;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+}
+#social a {
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+}
+#social:hover {
+    background: black;
+    color: white;
+}
+#social:hover a {
+    color: white;
+}
+
+#bio {
+    color: white;
+    background-color: black;
+    width: 25%;
+    /*height: 500px;*/
+    display: inline-block;
+    top: 30px;
+    left: 60px;
+    z-index: 1;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+}
+#bio:hover {
+    background: rgb(0,0,0, 0);
+}
+#bio .content {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+#profile-image {
+    display: inline-block;
+    border-radius: 50% 50%;
+    width: 20%;
+    padding: 0px;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+    position: relative;
+    z-index: 2;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+}
+#profile-image:hover {
+    -webkit-transform:	scale(1.1);
+    transform:		scale(1.1);
+}
+img {
+    width: 100%;
+    vertical-align: middle;
+}
+a {
+    color: white;
+}
+
