@@ -1,0 +1,28 @@
+float x = 400;
+float y = 300;
+float xspeed = 4;
+float yspeed = 3;
+
+void setup() {
+    size(800, 800);
+    background(225);
+}
+
+void draw() {
+    x = x + xspeed;
+    y = y + yspeed;
+    float ellipseSize = random(20);
+    ellipse(x, y, ellipseSize, ellipseSize);
+    
+    if (x > 800) {
+      xspeed = -4;
+    } else if (x < 0) {
+      xspeed = 4;
+    }
+    
+    if (y > 800) {
+      yspeed = -3;
+    } else if (y < 0) {
+      yspeed = 3;
+    }
+}
