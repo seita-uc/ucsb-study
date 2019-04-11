@@ -1,8 +1,8 @@
 html,body { height:100%; }
 body {
-    background-color: #B721FF;
-    background-image: url("images/Royal_Heath.jpg");
-    background-size: cover;
+    background-color: white;
+    /*background-image: url("images/Royal_Heath.jpg");*/
+    /*background-size: cover;*/
     font-family: 'Cairo', sans-serif;
 }
 @media screen and (max-width: 769px) {
@@ -134,4 +134,14 @@ img {
 a {
     color: white;
 }
-
+#work-image-container {
+    margin-top: 30px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    -webkit-justify-content: space-between; /* Safari */
+    justify-content:         space-between;
+}
+.work-image {
+    width: 30%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+}
