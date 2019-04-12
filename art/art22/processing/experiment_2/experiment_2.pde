@@ -1,3 +1,5 @@
+import processing.pdf.*;
+
 float x = 500;
 float y = 400;
 float xspeed = 4;
@@ -20,10 +22,11 @@ class Particle {
     }
 
     public void move() {
-        particleSize = random(5, 30);
+        particleSize = random(20, 80);
         px = px + pxspeed;
         py = py + pyspeed;
-        fill(pc);
+        strokeWeight(random(0.5, 2));
+        fill(pc, random(30, 40));
         ellipse(px, py, particleSize, particleSize);
 
         if(px > 800) {
@@ -40,20 +43,29 @@ class Particle {
     }
 }
 
-
-
+boolean record = true;
 Particle[] particles = new Particle[10];
 void setup() {
     size(800, 800);
     background(225);
     for(int i = 0; i < 10; i++) {
-        particles[i] = new Particle(random(0, 800), random(0, 800), random(-5, 5), random(-5, 5), color(random(255)));
+        particles[i] = new Particle(random(0, 800), random(0, 800), random(-15, 15), random(-15, 15), color(random(255), random(255), random(255)));
     }
 }
 
 void draw() {
+    if (record) {
+        beginRecord(PDF, String.format("images/screenshot_%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));
+        record = false;
+    } 
+    
     for(int i = 0; i < particles.length; i++) {
       println(i);
         particles[i].move();
     }
+}
+
+void keyPressed() {
+    endRecord();
+    record = true;
 }
