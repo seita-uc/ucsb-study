@@ -1,8 +1,8 @@
 html,body { height:100%; }
 body {
     background-color: white;
-    /*background-image: url("images/Royal_Heath.jpg");*/
-    /*background-size: cover;*/
+    background-image: url("images/screenshot_1.jpeg");
+    background-size: cover;
     font-family: 'Cairo', sans-serif;
 }
 @media screen and (max-width: 769px) {
@@ -29,6 +29,7 @@ header {
     display: inline-block;
     padding: 30px 70px 40px 70px;
     /*border-radius: 5% 5%;*/
+    background-color: white;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
     margin-right: 200px;
     vertical-align: middle;
@@ -37,14 +38,15 @@ header {
     transition-timing-function: ease-in-out;
 }
 #header-content:hover {
-    background-color: rgb(230,230,230,0.5);
+    background-color: rgb(0, 0, 0, 0);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 p {
     color: white;
     font-size: 15px;
 }
 #profile-content {
-    padding: auto;
+    /*padding: auto;*/
     text-align: center;
     /*display: inline-block;*/
     width: 100%;
@@ -105,7 +107,11 @@ p {
     transition-timing-function: ease;
 }
 #bio:hover {
-    background: rgb(0,0,0, 0);
+    background: rgb(0, 0, 0, 0);
+}
+#bio:hover p,
+#bio:hover h2 {
+    display: none;
 }
 #bio .content {
     padding-left: 60px;
@@ -120,28 +126,49 @@ p {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
     position: relative;
     z-index: 2;
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
 }
-#profile-image:hover {
-    -webkit-transform:	scale(1.1);
-    transform:		scale(1.1);
+#profile-image:hover img {
+    -webkit-transform:	scale(1.3);
+    transform:		scale(1.3);
 }
 img {
     width: 100%;
     vertical-align: middle;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
 }
 a {
     color: white;
 }
-#work-image-container {
-    margin-top: 30px;
+#works-container {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
+    width: 95%;
+    height: auto;
+    /*padding: 20px 20px;*/
     display: -webkit-flex; /* Safari */
     display: flex;
     -webkit-justify-content: space-between; /* Safari */
     justify-content:         space-between;
 }
-.work-image {
+.work-container {
     width: 30%;
+    height: auto;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+    /*padding-right: 10px;*/
+    /*padding-left: */
+}
+.work-image {
+    width: 100%;
+    margin: 0px 0px;
+}
+.work-source {
+    background-color: black;
+    /*height: auto;*/
+    text-align: center;
+    padding: 10px 10px;
+}
+.work-source a {
+    text-decoration: none;
 }
