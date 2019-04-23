@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Art 22 SU's Explorations</title>
-        <link rel="icon" href="http://class.arts.ucsb.edu/art22/Sites/s_19/students/SeitaUchimura/images/favicon.ico">
+        <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="myStyle.css" media="screen"> 
         <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
     </head>
@@ -170,20 +171,22 @@
                 </div>
             </div>
 
-            <div class="work-container" id="dummy">
-                <!--<div class="work-title">-->
-                    <!--people_variation_2-->
-                <!--</div>-->
-                <!--<figure class="work-image">-->
-                    <!--<a href="images/people_2.png">-->
-                        <!--<img src="images/people_2.png"></img>-->
-                    <!--</a>-->
-                <!--</figure>-->
-                <!--<div class="work-source">-->
-                    <!--<a href="codes/rocks_variation_1.pde">-->
-                        <!--See the code-->
-                    <!--</a>-->
-                <!--</div>-->
+            <div class="work-container">
+                <div class="work-title">
+                    people_variation_2
+                </div>
+                <canvas 
+                     data-processing-sources="codes/rocks_variation_1.pde"
+                     tabindex="0"
+                     id="__processing1"
+                     style="image-rendering: -webkit-optimize-contrast !important;"
+                     class="work-image">
+                </canvas>
+                <div class="work-source">
+                    <a href="codes/rocks_variation_1.pde">
+                        See the code
+                    </a>
+                </div>
             </div>
 
         </div>
