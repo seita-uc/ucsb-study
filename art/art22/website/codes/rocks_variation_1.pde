@@ -48,7 +48,8 @@ void setup(){
   size(800, 800);
   background(255);
   for(int i = 0; i < 10; i++) {
-      String imgPath = String.format("images/people_%d.png", i+1);
+      /*String imgPath = String.format("images/people_%d.png", i+1);*/
+      String imgPath = "codes/images/people_" + (i+1) + ".png";
       float x = random(0, 800);
       float y = random(0, 800);
       float xspeed = random(-15, 15);

@@ -6,19 +6,24 @@ body {
     font-family: 'Cairo', sans-serif;
 }
 @media screen and (max-width: 769px) {
-    body {
-        /*background-size: cover;*/
-        /*background-repeat: no-repeat;*/
+    #main {
+        text-align: center;
+        min-height: 400px;
+        height: 70vh;
+        position: relative;
+    }
+}
+@media screen and (min-width: 770px) {
+    #main {
+        text-align: center;
+        height: 100vh;
+        min-height: 800px;
+        position: relative;
     }
 }
 h1 {
     color: black;
     font-size: 35px;
-}
-#main {
-    text-align: center;
-    height: 100%;
-    position: relative;
 }
 header {
     margin-top: 40px;
@@ -28,13 +33,11 @@ header {
     width: auto;
     display: inline-block;
     padding: 30px 70px 40px 70px;
-    /*border-radius: 5% 5%;*/
     background-color: white;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
     margin-right: 200px;
     vertical-align: middle;
     transition-duration: 0.4s;
-    /*transition-delay: 1s;*/
     transition-timing-function: ease-in-out;
 }
 #header-content:hover {
@@ -46,9 +49,7 @@ p {
     font-size: 15px;
 }
 #profile-content {
-    /*padding: auto;*/
     text-align: center;
-    /*display: inline-block;*/
     width: 100%;
     height: 150px;
     margin-bottom: 20px;
@@ -63,7 +64,6 @@ p {
 }
 .content-wrapper {
     position: relative;
-    /*width: 100%;*/
 }
 .content-wrapper:before {
     content:"";
@@ -98,7 +98,6 @@ p {
     color: white;
     background-color: black;
     width: 25%;
-    /*height: 500px;*/
     display: inline-block;
     top: 30px;
     left: 60px;
@@ -140,15 +139,18 @@ img {
 a {
     color: white;
 }
+canvas {
+    width: 100%;
+    vertical-align: middle;
+}
 #works-container {
     margin-right: 2.5%;
     margin-left: 2.5%;
     margin-bottom: 5%;
     width: 95%;
     height: auto;
-    /*padding: 20px 20px;*/
     display: -webkit-flex; /* Safari */
-    display: flex;
+    /*display: flex;*/
     -webkit-justify-content: space-between; /* Safari */
     justify-content:         space-between;
     text-align: center;

@@ -6,6 +6,8 @@
         <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="myStyle.css" media="screen"> 
         <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+        <script type="text/javascript" src="codes/processing.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body>
         <div id="main">
@@ -32,6 +34,7 @@
                     </div>
                 </div>
             </div>
+
             <figure id="profile-image">
                 <img src="images/profile.jpg"></img>
             </figure>
@@ -141,6 +144,21 @@
         <div id="works-container">
             <div class="work-container">
                 <div class="work-title">
+                    people_variation
+                </div>
+                <canvas 
+                     data-processing-sources="codes/rocks_variation_1.pde"
+                     class="work-image">
+                </canvas>
+                <div class="work-source">
+                    <a href="codes/rocks_variation_1.pde">
+                        See the code
+                    </a>
+                </div>
+            </div>
+
+            <div class="work-container">
+                <div class="work-title">
                     people_variation_1
                 </div>
                 <figure class="work-image">
@@ -170,25 +188,6 @@
                     </a>
                 </div>
             </div>
-
-            <div class="work-container">
-                <div class="work-title">
-                    people_variation_2
-                </div>
-                <canvas 
-                     data-processing-sources="codes/rocks_variation_1.pde"
-                     tabindex="0"
-                     id="__processing1"
-                     style="image-rendering: -webkit-optimize-contrast !important;"
-                     class="work-image">
-                </canvas>
-                <div class="work-source">
-                    <a href="codes/rocks_variation_1.pde">
-                        See the code
-                    </a>
-                </div>
-            </div>
-
         </div>
     </body>
 </html>
