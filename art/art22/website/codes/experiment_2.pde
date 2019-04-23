@@ -43,29 +43,18 @@ class Particle {
     }
 }
 
-boolean record = true;
 Particle[] particles = new Particle[10];
 void setup() {
     size(800, 800);
-    background(225);
+    background(255);
     for(int i = 0; i < 10; i++) {
         particles[i] = new Particle(random(0, 800), random(0, 800), random(-15, 15), random(-15, 15), color(random(255), random(255), random(255)));
     }
 }
 
 void draw() {
-    if (record) {
-        beginRecord(PDF, String.format("images/screenshot_%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));
-        record = false;
-    } 
-    
     for(int i = 0; i < particles.length; i++) {
-      println(i);
         particles[i].move();
     }
 }
 
-void keyPressed() {
-    endRecord();
-    record = true;
-}
