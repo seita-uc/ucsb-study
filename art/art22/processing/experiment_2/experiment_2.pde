@@ -54,6 +54,7 @@ void setup() {
 }
 
 void draw() {
+    background(255, 255, 255, 10);
     if (record) {
         beginRecord(PDF, String.format("images/screenshot_%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));
         record = false;
