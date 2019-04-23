@@ -15,7 +15,7 @@ float speed3 = 5.8;
 Boolean isItOn3 = true;
 
 void setup(){
-  size(800,800, FX2D);
+  size(800, 800, FX2D);
  //size(800,600);
  background(255);
  rock1 = loadImage("images/rock1.png");

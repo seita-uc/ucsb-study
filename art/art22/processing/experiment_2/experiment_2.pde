@@ -29,18 +29,13 @@ class Particle {
         fill(pc, random(30, 40));
         ellipse(px, py, particleSize, particleSize);
 
-        if(px > 800) {
+        if(px > 800 || px < 0) {
             pxspeed = -pxspeed; 
-        } else if (px < 0) {
-            pxspeed = -pxspeed;
         }
 
-        if(py > 800) { 
+        if(py > 800 || py < 0) { 
             pyspeed = -pyspeed; 
-        } else if (py < 0) {
-            pyspeed = -pyspeed;
-        }
-    }
+        }     
 }
 
 boolean record = true;
