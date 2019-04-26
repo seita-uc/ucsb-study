@@ -8,6 +8,8 @@ class Alien {
     public float asize;
     public Boolean isShot;
     public long shotTime;
+    public float particleX;
+    public float particleY;
 
     public Alien() {
         initialize();
@@ -48,13 +50,18 @@ class Alien {
             strokeWeight(weight);
             stroke(255,255,0);
             line(mouseX, mouseY, ax, ay);
+            noStroke();
+            fill(255,255,0);
+            ellipse(ax, ay, asize, asize);
         }
 
         noStroke();
         fill(178, 34, 34);
-        ellipse(ax, ay, timePassed/30, timePassed/30);
+        float explosionSize = timePassed / 30 + asize;
+        ellipse(ax, ay, explosionSize, explosionSize);
         fill(255, 140, 0);
-        ellipse(ax, ay, timePassed/50, timePassed/50);
+        float explosionCoreSize = timePassed/50;
+        ellipse(ax, ay, explosionCoreSize, explosionCoreSize);
     }
 
     public void getShot() {
@@ -74,19 +81,17 @@ class User {
     public void fight() {
         imageMode(CENTER);
         noStroke();
-        translate(mouseX, mouseY);
-        rotate(HALF_PI);
-        /*fill(255);*/
-        /*rect(mouseX, mouseY, 50, 50);*/
+        //translate(mouseX, mouseY);
+        //rotate(HALF_PI);
         image(img, 0, 0, 50, 50);   
     }
 
-    public void shoot(Alien alien) {
+    public void fire(Alien alien) {
         alien.getShot();
     }
 }
 
-int totalAliens = 20;
+int totalAliens = 1;
 Alien[] aliens = new Alien[totalAliens];
 User user;
 void setup(){
@@ -98,7 +103,7 @@ void setup(){
 } 
 
 void draw(){
-  background(0);
+  //background(0);
   imageMode(CENTER);
   for(int i = 0; i < aliens.length; i++) {
       aliens[i].invade();
@@ -107,5 +112,45 @@ void draw(){
 }
 
 void keyPressed(){
-    user.shoot(aliens[int(random(0, aliens.length))]);
+    for(int i = 0; i < aliens.length; i++) {
+        int randNum = int(random(i, aliens.length));
+        if(!aliens[randNum].isShot) {
+            user.fire(aliens[randNum]);
+            lineFunction(mouseX, mouseY, aliens[randNum].ax, aliens[randNum].ay, 50);
+            break;
+        }
+    }
 } 
+
+void lineFunction(float px, float  py, float qx, float qy, int prog) {
+    /*for(int i = 0; i < width; i++) {*/
+        /*for(int j = 0; j < height; j++) {*/
+            /*py == px * i + j;*/
+            /*qy == qx * i + j;*/
+        /*}*/  
+    /*}*/
+    float ry = py - qy;
+    float rx = px - qx;
+    float a = ry / -rx;
+    println("ry:", ry);
+    println("rx:", rx);
+    println("a:", a);
+    float xdiff = px - qx;
+    println("diff:", xdiff);
+    float x = -xdiff * prog / 100;
+    println("x:", x);
+    float y =   a * x;
+    println("y:", y);
+    fill(255);
+    println("mousex:", mouseX);
+    println("mousey:", mouseY);
+    println("ax:", qx);
+    println("ay:", qy);
+    float resx = mouseX + x;
+    float resy = mouseY - y;
+    println("resx:", resx);      
+    println("resy:", resy);
+    ellipse(int(resx), int(resy), 200, 200);
+    ellipse(100, 100, 20, 20);
+    
+}   
