@@ -20,7 +20,7 @@ class Alien {
         ax = width;
         ay = random(0, 800);
         axspeed = random(1, 5);
-        asize = random(30, 50);
+        asize = random(30, 40);
         isShot = false;
     }
 
@@ -34,7 +34,7 @@ class Alien {
             if(ax < 0) {
                 ax = width;
             }
-        }
+        }      
     }
 
     public void explode() {
@@ -58,10 +58,10 @@ class Alien {
 
         noStroke();
         fill(178, 34, 34);
-        float explosionSize = timePassed/30+asize;
+        float explosionSize = timePassed / 30 + asize;
         ellipse(ax, ay, explosionSize, explosionSize);
         fill(255, 140, 0);
-        float explosionCoreSize = timePassed/30;
+        float explosionCoreSize = timePassed/50;
         ellipse(ax, ay, explosionCoreSize, explosionCoreSize);
     }
 
@@ -96,8 +96,7 @@ int totalAliens = 20;
 Alien[] aliens = new Alien[totalAliens];
 User user;
 void setup(){
-  /*size(800, 800, FX2D);*/
-  size(displayWidth, displayHeight, FX2D);
+  size(800, 800, FX2D);
   for(int i = 0; i < totalAliens; i++) {
       aliens[i] = new Alien();
   }
@@ -131,9 +130,9 @@ void showParticle(float px, float  py, float qx, float qy, int percent) {
     float a = ry / -rx;
     float xdiff = px - qx;
     float x = -xdiff * percent / 100;
-    float y = a * x;
+    float y =   a * x;
     float resx = mouseX + x;
     float resy = mouseY - y;
     fill(255,255,0);
-    ellipse(resx, resy, 20, 20);
+    ellipse(int(resx), int(resy), 20, 20);
 }   
