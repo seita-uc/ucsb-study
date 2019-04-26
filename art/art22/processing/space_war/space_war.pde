@@ -6,12 +6,10 @@ class Alien {
     public float ay;
     public float axspeed;
     public float asize;
-    public int aid;
     public Boolean isShot;
     public long shotTime;
 
-    public Alien(int id) {
-        aid = id;
+    public Alien() {
         initialize();
     }
 
@@ -41,13 +39,12 @@ class Alien {
         Date d = new Date();
         long timePassed = d.getTime() - shotTime;
 
-        if(timePassed > 1500) {
+        if(timePassed > 1000) {
             initialize();
         }
 
         if(timePassed > 0 && timePassed < 500) {
             float weight = 500/timePassed;
-            println(weight);
             strokeWeight(weight);
             stroke(255,255,0);
             line(mouseX, mouseY, ax, ay);
@@ -56,6 +53,8 @@ class Alien {
         noStroke();
         fill(178, 34, 34);
         ellipse(ax, ay, timePassed/30, timePassed/30);
+        fill(255, 140, 0);
+        ellipse(ax, ay, timePassed/50, timePassed/50);
     }
 
     public void getShot() {
@@ -66,37 +65,36 @@ class Alien {
 }
 
 class User {
-    public float r;
-    public float g;
-    public float b;
+    public PImage img;
 
     public User() {
-        r = random(255);
-        g = random(255);
-        b = random(255);
+        img = loadImage("images/user.png");
     }
 
     public void fight() {
+        imageMode(CENTER);
         noStroke();
-        fill(r, g, b);
-        ellipse(mouseX, mouseY, 20, 20);
+        translate(mouseX, mouseY);
+        rotate(HALF_PI);
+        /*fill(255);*/
+        /*rect(mouseX, mouseY, 50, 50);*/
+        image(img, 0, 0, 50, 50);   
     }
 
     public void shoot(Alien alien) {
-        stroke(255);
         alien.getShot();
     }
 }
 
-
-int totalAliens = 50;
+int totalAliens = 20;
 Alien[] aliens = new Alien[totalAliens];
-User user = new User();
+User user;
 void setup(){
   size(800, 800, FX2D);
   for(int i = 0; i < totalAliens; i++) {
-      aliens[i] = new Alien(i);
+      aliens[i] = new Alien();
   }
+  user = new User();
 } 
 
 void draw(){
