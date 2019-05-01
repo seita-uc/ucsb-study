@@ -1,0 +1,88 @@
+  // Getting the color from an image
+// Using: "Persistence of Memory" by Salvador Dalí
+
+PImage imgDali;
+int imgDaliWidth, imgDaliHeight;
+PImage imgPortrait;
+color[] colors = new color[10];
+int weight;
+
+void setup(){
+    size(800, 800);
+    imgDali = loadImage("images/persistence_of_memory.jpg");
+    imgDaliWidth = imgDali.width;
+    imgDaliHeight = imgDali.height;
+    imgPortrait = loadImage("images/me.png");
+    imgPortrait.filter(GRAY);
+    extractColors();
+    /*for(int i = 0; i < height; i++) {*/
+        /*int y = int(random(i, i+100));*/
+        /*stroke(colors[int(random(0,colors.length))]);*/
+        /*strokeWeight(int(random(3, 10)));*/
+        /*line(0, y, width, y);*/
+    /*}*/
+}
+
+void draw(){
+    for(int y = 0; y < imgPortrait.height; y+=10){
+        for(int x = 0; x < imgPortrait.width; x+=1){
+            weight = adjustWeight(imgPortrait.get(x, y));
+            println("weight: ", weight);
+            if(weight == 0) {
+                continue;
+            }
+            strokeWeight(weight);
+            line(x, y, x+1, y);
+        }
+    }
+}
+
+int adjustWeight(color c){
+    for(int i = 10; i > 5; i--) {
+        if(c < -16 * 100000 * i) {
+            return i;
+        }
+    }
+    return 0;
+    /*if(c < -16000000) {*/
+        /*return 10;*/
+    /*} else if(c < -14500000) {*/
+
+    /*} else if(c < -13000000) {*/
+
+    /*}*/
+        /*case :*/
+            /*return 9;*/
+        /*case :*/
+            /*return 8;*/
+        /*case c < -12000000:*/
+            /*return 7;*/
+        /*case c < -9000000:*/
+            /*return 6;*/
+        /*case c < -8000000:*/
+            /*return 5;*/
+        /*case c < -7000000:*/
+            /*return 4;*/
+        /*case c < -6000000:*/
+            /*return 3;*/
+        /*case c < -5000000:*/
+            /*return 2;*/
+        /*case c < -4000000:*/
+            /*return 1;*/
+        /*default:*/
+            /*return 0;*/
+    /*}*/
+}
+
+void extractColors() {
+    for(int i = 0; i < colors.length; i++) {
+        int x = int(random(imgDaliWidth));
+        int y = int(random(imgDaliHeight));
+        color tempColor = imgDali.get(x, y);
+        colors[i] = tempColor;
+    }
+}
+
+void keyPressed(){
+    if(key == '1') saveFrame("images/portrait_######.jpg");
+} 

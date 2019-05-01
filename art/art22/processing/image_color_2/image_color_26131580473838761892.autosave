@@ -1,0 +1,22 @@
+  // Getting the color from an image
+// Using: "Woman Leaving the Psychoanalyst" by Remedios Varo
+
+PImage colorPic;
+int colorW, colorH;
+
+void setup() {
+    size(500, 500);
+    colorPic = loadImage("images/remediosVaro.jpg");
+    colorW = colorPic.width;
+    colorH = colorPic.Height;
+    println("w: ", colorW, " / h: ", colorH);
+}
+
+void draw() {
+    float x = random(width);
+    float y = random(width);
+    
+    fill(colorPic.get(int(x), int(y)));
+    noStroke();
+    ellipse(x, y, 5, 5);
+}
