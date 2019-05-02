@@ -1,8 +1,6 @@
-import java.util.*;
-
 float halfWidth; 
 float halfHeight; 
-WaterParticle[] particles = new WaterParticle[1000];
+WaterParticle[] particles = new WaterParticle[3000];
 
 void setup(){
     size(800, 800);
@@ -16,10 +14,12 @@ void setup(){
 
 void draw(){
     background(0);
+    /*for(int i = 0; i < particles.length; i++) { */
+        /*particles[i].move();*/
+    /*}*/
     for(int i = 0; i < particles.length; i++) { 
         particles[i].move();
     }
-    /*ellipse(halfWidth, halfHeight, 3, 3);*/
 }
 
 void keyPressed(){
@@ -38,16 +38,20 @@ class WaterParticle {
     public Boolean isGoingUp;
 
     public WaterParticle() {
-        initialize();
+        initialize(true);
     }
 
-    public void initialize() {
+    public void initialize(Boolean isFirst) {
+        if (isFirst) {
+            wy = random(height, height + 1500);
+        } else {
+            wy = random(height, height + 1500);
+        }
         isGoingUp = true;
         wx = halfWidth + random(-20, 20);
-        wy = height;
         wxSpeed = random(-5, 5);
-        wySpeed = random(-10, -5);
-        wSize = random(1, 10);
+        wySpeed = random(-12, -5);
+        wSize = random(3, 15);
         float randNum = random(0, 120);
         wColor = color(randNum, randNum, random(125, 255));
         wOpacity = random(20, 255);
@@ -59,17 +63,20 @@ class WaterParticle {
         fill(wColor, wOpacity);
         ellipse(wx, wy, wSize, wSize);
 
-        if(wy < 0 || wy > height) {
-            initialize();
-        } else if (wy < height/3) {
+        if (wy < height/2) {
             isGoingUp = false;
+        } else if (wy < 0) {
+            initialize(false);
+        } else if (!isGoingUp && wy > height) {
+            initialize(false);
         }
 
         if(isGoingUp) {
             wy += wySpeed;
         } else {
             wx += wxSpeed;
-            wySpeed += 0.5 ;
+            wySpeed += 0.7 ;
+            wOpacity -= 2.5;
         }
         wy += wySpeed;
     }
