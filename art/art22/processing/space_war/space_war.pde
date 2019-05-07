@@ -1,5 +1,27 @@
 import java.util.*; 
 
+int totalAliens = 20;
+Alien[] aliens = new Alien[totalAliens];
+Player player;
+
+void setup(){
+  size(800, 800);
+  /*size(displayWidth, displayHeight, FX2D);*/
+  for(int i = 0; i < totalAliens; i++) {
+      aliens[i] = new Alien();
+  }
+  player = new Player();
+} 
+
+void draw(){
+  background(0);
+  imageMode(CENTER);
+  for(int i = 0; i < aliens.length; i++) {
+      aliens[i].invade();
+  }
+  player.fight();
+}
+
 class Alien {
     public PImage img;
     public float ax;
@@ -90,27 +112,6 @@ class Player {
     public void fire(Alien alien) {
         alien.getShot();
     }
-}
-
-int totalAliens = 20;
-Alien[] aliens = new Alien[totalAliens];
-Player player;
-void setup(){
-  size(800, 800);
-  /*size(displayWidth, displayHeight, FX2D);*/
-  for(int i = 0; i < totalAliens; i++) {
-      aliens[i] = new Alien();
-  }
-  player = new Player();
-} 
-
-void draw(){
-  background(0);
-  imageMode(CENTER);
-  for(int i = 0; i < aliens.length; i++) {
-      aliens[i].invade();
-  }
-  player.fight();
 }
 
 void keyPressed(){

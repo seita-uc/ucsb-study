@@ -1,0 +1,55 @@
+  import processing.pdf.*; 
+
+Particle[] particles = new Particle[5];
+void setup() {
+    size(500, 500);
+    beginRecord(PDF, "captures/perlin.pdf");
+    for(int i = 0; i < particles.length; i++) { 
+        float x = random(width);
+        float y = random(height);
+        float noiseX = random(0.005, 0.01);
+        float noiseY = random(0.005, 0.01);
+        particles[i] = new Particle(x, y, noiseX, noiseY);
+    }
+}
+
+void draw() {
+    for(int i = 0; i < particles.length; i++) { 
+        particles[i].run();
+    }
+}
+
+void mousePressed() {
+    endRecord();
+    exit();
+}
+
+class Particle {
+    public float px;
+    public float py;
+    public float pnoiseX;
+    public float pnoiseY;
+    public float pvariationX;
+    public float pvariationY;
+
+    public Particle(float x, y, noiseX, noiseY) {
+        px = x;
+        py = y;
+        pnoiseX = noiseX;
+        pnoiseY = noiseY;
+        pvariationX = 0;
+        pvariationY = 0;
+    }
+
+    public void run() {
+        pvariationX += pnoiseX;
+        pvariationY += pnoiseY;
+        px = noise(pvariationX) * width;
+        py = noise(pvariationY) * height;
+        println(noise(pvariationY));
+
+        fill(random(255));
+        strokeWeight(random(5));
+        ellipse(px, py, 5, 5);
+    }
+}
