@@ -57,6 +57,8 @@ class Particle {
         pvariationX = random(1, 100);
         pvariationY = random(1, 100);
         psize = random(1, 5);
+        /*pvariationX = 50;*/
+        /*pvariationY = 50;*/
         randNum = random(60);
         R = random(120, 255);
         G = randNum; 
