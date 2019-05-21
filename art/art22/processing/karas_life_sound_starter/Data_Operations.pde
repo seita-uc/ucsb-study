@@ -1,5 +1,3 @@
-
-
 void loadDataSet() {
   // 1. Loading the Table
   table = loadTable("data/kara.csv", "header");
@@ -10,6 +8,9 @@ void loadDataSet() {
   println("Rows: ", rows);
   for (int i=0; i<rows; i++) {
     animatedSize[i] = 0;
+    
+    int thisYear = table.getInt(i, 0);
+    x[i] = map(thisYear, 1998, 2019, 200, 700);
     println("year: ", table.getString(i, 0));
     println("level: ", table.getString(i, 1));
   }
