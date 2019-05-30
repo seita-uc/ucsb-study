@@ -59,7 +59,7 @@ void parseMessage(String msg) {
         changeSize = abs(msgObj.getFloat("change_size"));
     }
 
-    message = new Message(msgStr, changeSize);
+    message = new Message(this, msgStr, changeSize);
     try {
         msgSemaphore.acquire();
         messages.add(message);
@@ -92,85 +92,3 @@ Boolean validateMsg(String msg) {
     Matcher m = p.matcher(msg);
     return m.find();
 }
-
-public class Language {
-    public String message;
-    public float size;
-    public float mx;
-    public float my;
-    public PApplet parent;
-    public WebsocketClient socket;
-    public Semaphore msgSemaphore = new Semaphore(1);
-    public ArrayList<Message> messages = new ArrayList<Message>();
-
-    public Language(PApplet parent, String url) {
-        /*"ws://wikimon.hatnote.com:9000"*/
-        /*this.parent = parent;*/
-        /*this.parent.getClass().webSocketEvent = this.visualize;*/
-        socket = new WebsocketClient(this.parent, url);
-        /*socket.sendMessage("Ping");*/
-    }
-
-    public void visualize() {
-        for(Iterator it = messages.iterator(); it.hasNext();) {
-            Message msg = (Message)it.next();
-            pushMatrix();
-            msg.show();
-            popMatrix();
-        }
-    }
-    
-    public void webSocketEvent(String msg) {
-        println(msg);
-    }
-}
-
-class Message {
-    public String message;
-    public float size;
-    public float mx;
-    public float my;
-    public float mnoiseX;
-    public float mnoiseY;
-    public float mvariationX;
-    public float mvariationY;
-
-    public Message(String msg, float changeSize) {
-        message = msg;
-        size = changeSize;
-        mx = random(0, width);
-        my = random(0, height);
-        mnoiseX = random(0.001, 0.01);
-        mnoiseY = random(0.001, 0.01);
-        mvariationX = random(1, 100);
-        mvariationY = random(1, 100);
-    }
-
-    public void show() {
-        pushMatrix();
-        translate(width/2, 0);
-        rotate(radians(45));
-        mvariationX += mnoiseX;
-        mvariationY += mnoiseY;
-        mx = noise(mvariationX) * width;
-        my = noise(mvariationY) * height;
-        println(noise(mvariationY) * height);
-        drawCircle(mx, my, size);
-        fill(255);
-        text(message, mx, my);
-        popMatrix();
-    }
-}
-
-void drawCircle(float x, float y, float size) {
-    for(float deg = 0.0; deg < 360; deg += 0.5) {
-        float rad = radians(deg);
-        float r = size;
-        float rcos = r * cos(rad);
-        float rsin = r * sin(rad);
-        fill(255);
-        noStroke();
-        ellipse(x + rcos, y + rsin, 5, 5);
-    }
-}
-
