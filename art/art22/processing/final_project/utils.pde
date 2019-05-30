@@ -45,6 +45,50 @@ Map<String, String> endpoints = new HashMap<String, String>() {
     }
 };
 
+Map<String, String> langList = new HashMap<String, String>() {
+    {
+        put("en", "English");
+        put("de", "German");
+        put("ru", "Russian");
+        put("uk", "Ukrainian");
+        put("ja", "Japanese");
+        put("es", "Spanish");
+        put("fr", "French");
+        put("nl", "Dutch");
+        put("it", "Italian");
+        put("sv", "Swedish");
+        put("ar", "Arabic");
+        put("fa", "Farsi");
+        put("he", "Hebrew");
+        put("id", "Indonesian");
+        put("zh", "Chinese");
+        put("as", "Assamese");
+        put("hi", "Hindi");
+        put("bn", "Bengali");
+        put("pa", "Punjabi");
+        put("te", "Telugu");
+        put("ta", "Tamil");
+        put("ml", "Malayalam");
+        put("mr", "Western Mari");
+        put("kn", "Kannada");
+        put("or", "Oriya");
+        put("sa", "Sanskrit");
+        put("gu", "Gujarati");
+        put("pl", "Polish");
+        put("mk", "Macedonian");
+        put("be", "Belarusian");
+        put("sr", "Serbian");
+        put("bg", "Bulgarian");
+        put("hu", "Hungarian");
+        put("fi", "Finnish");
+        put("no", "Norwegian");
+        put("el", "Greek");
+        put("eo", "Esperanto");
+        put("pt", "Portuguese");
+        put("et", "Estonian");
+    }
+};
+
 class MessageContent {
     public String msg;
     public String code;
@@ -63,7 +107,7 @@ MessageContent parseMessage(String msg) {
     String url = msgObj.getString("url");
     String langCode = extractLangCode(url);
     if(langCode == "" || validateMsg(msgStr)) {
-        return;
+        return null;
     }
 
     float changeSize = 20;

@@ -1,11 +1,8 @@
 import java.util.concurrent.Semaphore;
 import java.util.Iterator;
 import java.util.ArrayList;
-import processing.core.*;
 
 class Language {
-    public PApplet p;
-    public String lang;
     public Semaphore semaphore = new Semaphore(1);
     public ArrayList<Message> messages = new ArrayList<Message>();
     public float x;
@@ -14,14 +11,14 @@ class Language {
     public float noiseY;
     public float variationX;
     public float variationY;
+    public String name;
 
-    public Language(PApplet parent, String langCode) {
-        p = parent;
-        lang = langCode;
-        noiseX = p.random((float)-0.001, (float)0.001);
-        noiseY = p.random((float)-0.001, (float)0.001);
-        variationX = p.random(1, 100);
-        variationY = p.random(1, 100);
+    public Language(String langName) {
+        name = langName;
+        noiseX = random((float)-0.001, (float)0.001);
+        noiseY = random((float)-0.001, (float)0.001);
+        variationX = random(1, 100);
+        variationY = random(1, 100);
     }
 
     public void addMessage(Message msg) {
@@ -39,8 +36,8 @@ class Language {
             semaphore.acquire();
             variationX += noiseX;
             variationY += noiseY;
-            x = p.noise(variationX) * p.width;
-            y = p.noise(variationY) * p.height;
+            x = noise(variationX) * width;
+            y = noise(variationY) * height;
             for(Iterator it = messages.iterator(); it.hasNext();) {
                 Message msg = (Message)it.next();
 

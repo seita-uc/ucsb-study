@@ -11,9 +11,8 @@ Map<String, WebsocketClient> sockets = new HashMap<String, WebsocketClient>();
 
 void setup(){
     size(800, 800);
-    String url = "ws://wikimon.hatnote.com:9000";
     for(Map.Entry<String, String> entry : endpoints.entrySet()) {
-        Language lang = new Language(this, entry.getKey());
+        Language lang = new Language(langList.get(entry.getKey()));
         languages.put(entry.getKey(), lang);
         WebsocketClient socket = new WebsocketClient(this, entry.getValue());
         sockets.put(entry.getKey(), socket);
@@ -39,8 +38,11 @@ void draw(){
 void webSocketEvent(String msg){
     if(msg != "") {
         MessageContent content = parseMessage(msg);
-        Language lang = languages.get(content.langCode);
-        Message message = new Message(this, content.msg, content.changeSize);
+        if(content == null){
+            return;
+        }
+        Language lang = languages.get(content.code);
+        Message message = new Message(content.msg, content.size);
         lang.addMessage(message);
     }
 }
