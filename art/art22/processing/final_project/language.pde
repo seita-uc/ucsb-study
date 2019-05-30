@@ -38,9 +38,10 @@ class Language {
             variationY += noiseY;
             x = noise(variationX) * width;
             y = noise(variationY) * height;
+            textAlign(CENTER);
+            text(name, x, y);
             for(Iterator it = messages.iterator(); it.hasNext();) {
                 Message msg = (Message)it.next();
-
                 msg.show(x, y);
             }
             semaphore.release();
