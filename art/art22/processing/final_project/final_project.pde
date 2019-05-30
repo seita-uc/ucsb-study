@@ -5,25 +5,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.Semaphore;
 
+
+
 WebsocketClient wsc;
-WebsocketClient wsc_2;
 Language english;
-/*Message message;*/
-/*ArrayList<Message> messages = new ArrayList<Message>();*/
 Semaphore msgSemaphore = new Semaphore(1);
 Semaphore matrixSemaphore = new Semaphore(1);
-/*float x;*/
-/*float y;*/
-/*float noiseX = random((float)-0.001, (float)0.001);*/
-/*float noiseY = random((float)-0.001, (float)0.001);*/
-/*float variationX = random(1, 100);*/
-/*float variationY = random(1, 100);*/
+Map<String, Language> languages = new HashMap<String, Language>();
 
 void setup(){
     size(800, 800);
     String url = "ws://wikimon.hatnote.com:9000";
     wsc= new WebsocketClient(this, url);
-    english = new Language(this, "ws://wikimon.hatnote.com:9000");
+    english = new Language(this, "en");
 }
 
 void draw(){
