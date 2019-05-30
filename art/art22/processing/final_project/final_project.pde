@@ -2,10 +2,12 @@ import websockets.*;
 import java.util.regex.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.Semaphore;
 
 WebsocketClient wsc;
 Message message;
 ArrayList<Message> messages = new ArrayList<Message>();
+Semaphore semaphore = new Semaphore(1);
 
 void setup(){
     size(1000, 1000);
@@ -14,10 +16,18 @@ void setup(){
 
 void draw(){
     background(0);
-    for(Iterator it = messages.iterator(); it.hasNext();) {
-        Message msg = (Message)it.next();
-        msg.show();
+
+    try {
+        semaphore.acquire();
+        for(Iterator it = messages.iterator(); it.hasNext();) {
+            Message msg = (Message)it.next();
+            msg.show();
+        }
+        semaphore.release();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
+
     if(frameCount % 60 == 0) {
         wsc.sendMessage("Ping");
     }
@@ -40,7 +50,13 @@ void webSocketEvent(String msg){
             return;
         }
         message = new Message(msgStr);
-        messages.add(message);
+        try {
+            semaphore.acquire();
+            messages.add(message);
+            semaphore.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
