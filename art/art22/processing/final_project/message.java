@@ -4,37 +4,26 @@ class Message {
     public PApplet p;
     public String message;
     public float size;
-    public float mx;
-    public float my;
-    public float mnoiseX;
-    public float mnoiseY;
-    public float mvariationX;
-    public float mvariationY;
+    public float angle;
 
     public Message(PApplet parent, String msg, float changeSize) {
         p = parent;
         message = msg;
         size = changeSize;
-        mx = p.random(0, p.width);
-        my = p.random(0, p.height);
-        mnoiseX = p.random((float)0.001, (float)0.01);
-        mnoiseY = p.random((float)0.001, (float)0.01);
-        mvariationX = p.random(1, 100);
-        mvariationY = p.random(1, 100);
     }
 
-    public void show() {
+    public void show(float x, float y) {
         p.pushMatrix();
-        p.translate(p.width/2, p.height/2);
-        p.rotate(p.radians(p.map(p.second(), 0, 60, 0, 360)));
-        mvariationX += mnoiseX;
-        mvariationY += mnoiseY;
-        mx = p.noise(mvariationX) * p.width;
-        my = p.noise(mvariationY) * p.height;
-        /*println(noise(mvariationY) * height);*/
-        drawCircle(mx, my, size);
+        p.translate(x, y);
+
+        angle++;
+        float c = p.radians(angle);
+        p.rotate(c);
+
+        //drawCircle(0, 0, size);
         p.fill(255);
-        p.text(message, mx, my);
+        p.textSize(10);
+        p.text(message, 0, 0);
         p.popMatrix();
     }
 
@@ -50,4 +39,3 @@ class Message {
         }
     }
 }
-
