@@ -19,15 +19,19 @@ class Language implements Comparable<Language> {
 
     public Language(String langName) {
         name = langName;
+        angle = random(0, 360);
         /*noiseX = random((float)-0.001, (float)0.001);*/
         /*noiseY = random((float)-0.001, (float)0.001);*/
         /*variationX = random(1, 100);*/
         /*variationY = random(1, 100);*/
     }
 
-    @Override
     public int compareTo(Language lang) {
-        return (int)(this.weight - lang.getWeight());
+        if (this.weight <= lang.getWeight()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     public void addMessage(Message msg) {
@@ -68,7 +72,7 @@ class Language implements Comparable<Language> {
             /*y = noise(variationY) * height;*/
 
             textAlign(CENTER);
-            fill(0, 100);
+            fill(0);
             textSize(10);
             text(name, x, y);
 

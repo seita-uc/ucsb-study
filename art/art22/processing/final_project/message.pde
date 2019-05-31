@@ -12,9 +12,9 @@ class Message {
         pushMatrix();
         translate(x, y);
 
-        angle++;
-        float c = radians(angle);
-        rotate(c);
+        angle--;
+        float rad = radians(angle);
+        rotate(rad);
 
         //drawCircle(0, 0, size);
         /*color randomColor = color(random(255), random(255), random(255));*/

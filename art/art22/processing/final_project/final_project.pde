@@ -2,10 +2,12 @@ import processing.core.*;
 import websockets.*;
 import java.util.regex.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.Map;
+import java.util.*;
 
 Map<String, Language> languages = new HashMap<String, Language>();
 Map<String, WebsocketClient> sockets = new HashMap<String, WebsocketClient>();
@@ -68,13 +70,30 @@ void drawSystem() {
 }
 
 void reflectRanksOfLanguages() {
-    TreeMap<String, Language> sorted = new TreeMap<String, Language>(languages);
-    int i = 0;
-    for (Map.Entry<String, Language> entry : sorted.entrySet()) {
+    /*TreeMap<String, Language> sorted = new TreeMap<String, Language>(languages);*/
+
+    // 順序を保持するためのリスト(Map.entrySetでキーと値の一覧が取得できます)
+    List<Map.Entry<String, Language>> mapOrderList = new ArrayList<Map.Entry<String, Language>>(languages.entrySet());
+    // ソートの方法を指定してソート実施
+    Collections.sort(mapOrderList, new ValueListComparator());
+
+    /*int i = 0;*/
+    // ソートの結果を出力
+    for(int i = 0; i < mapOrderList.size(); i++) {
+        Map.Entry<String, Language> entry= mapOrderList.get(i);
         Language lang = entry.getValue();
         lang.changeRank(i+1);
-        println(lang.name);
-        i++;
+        println(i+1 + ": " + lang.name + " " + lang.getWeight());
+    }
+}
+
+static class ValueListComparator
+implements Comparator<Map.Entry<String, Language>>{
+    public int compare(Map.Entry<String, Language> object1,
+            Map.Entry<String, Language> object2){
+        Language lang1 = object1.getValue();
+        Language lang2 = object2.getValue();
+        return lang1.compareTo(lang2);
     }
 }
 
