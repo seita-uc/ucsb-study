@@ -19,19 +19,8 @@ class Message {
         //drawCircle(0, 0, size);
         /*color randomColor = color(random(255), random(255), random(255));*/
         fill(0, size);
+        textSize(5);
         text(message, 0, 0);
         popMatrix();
-    }
-
-    public void drawCircle(float x, float y, float size) {
-        for(float deg = 0; deg < 360; deg += 0.5) {
-            float rad = radians(deg);
-            float r = size;
-            float rcos = r * cos(rad);
-            float rsin = r * sin(rad);
-            fill(255);
-            noStroke();
-            ellipse(x + rcos, y + rsin, 5, 5);
-        }
     }
 }

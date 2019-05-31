@@ -27,11 +27,12 @@ class Language implements Comparable<Language> {
     }
 
     public int compareTo(Language lang) {
-        if (this.weight <= lang.getWeight()) {
+        if (this.weight < lang.getWeight()) {
             return 1;
-        } else {
+        } else if (this.weight > lang.getWeight()) {
             return -1;
         }
+        return 0;
     }
 
     public void addMessage(Message msg) {
@@ -57,7 +58,7 @@ class Language implements Comparable<Language> {
         angle++;
         float rad = radians(angle);
         /*float r = width/8*(i+1);*/
-        float r = width/(endpoints.size()*2)*rank;
+        float r = width/endpoints.size()*rank;
         float rcos = r * cos(rad);
         float rsin = r * sin(rad);
         x = width/2 + rcos;
@@ -73,12 +74,12 @@ class Language implements Comparable<Language> {
 
             textAlign(CENTER);
             fill(0);
-            textSize(10);
-            text(name, x, y);
+            /*textSize(10);*/
+            /*text(name, x, y);*/
+            ellipse(x, y, 5, 5);
 
             for(Iterator it = messages.iterator(); it.hasNext();) {
                 Message msg = (Message)it.next();
-                textAlign(LEFT);
                 msg.show(x, y);
             }
             semaphore.release();
