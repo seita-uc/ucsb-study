@@ -10,12 +10,16 @@ import java.util.Map;
 import java.util.Collections;
 import java.util.Comparator;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import processing.pdf.*; 
 
 Map<String, Language> languages = new HashMap<String, Language>();
 Map<String, WebsocketClient> sockets = new HashMap<String, WebsocketClient>();
 
 void setup(){
     size(900, 900);
+    beginRecord(PDF, String.format("images/final_project__%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));
+
     PFont font = createFont("Yu Gothic", 64, true);
     textFont(font);
 
@@ -50,6 +54,11 @@ void draw(){
     }
 }
 
+void mousePressed() {
+    endRecord();
+    exit();
+}
+
 void webSocketEvent(String msg){
     if(msg != "") {
         MessageContent content = parseMessage(msg);
@@ -61,37 +70,3 @@ void webSocketEvent(String msg){
         lang.addMessage(message);
     }
 }
-
-void drawSystem() {
-    for(int i = 0; i < endpoints.size() + 30; i++) {
-        noFill();
-        BigDecimal bdWidth = new BigDecimal(width);
-        BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
-        BigDecimal bdIndex = new BigDecimal(i+1);
-        float d = bdWidth.divide(bdEndpointSize).multiply(bdIndex).floatValue();
-        strokeWeight(1);
-        ellipse(width/2, height/2, d, d);
-    }
-}
-
-void reflectRanksOfLanguages() {
-    List<Map.Entry<String, Language>> mapOrderList = new ArrayList<Map.Entry<String, Language>>(languages.entrySet());
-    Collections.sort(mapOrderList, new ValueListComparator());
-    for(int i = 0; i < mapOrderList.size(); i++) {
-        Map.Entry<String, Language> entry= mapOrderList.get(i);
-        Language lang = entry.getValue();
-        lang.changeRank(i+1);
-        /*println(i+1 + ": " + lang.name + " " + lang.getWeight());*/
-    }
-}
-
-static class ValueListComparator
-implements Comparator<Map.Entry<String, Language>>{
-    public int compare(Map.Entry<String, Language> object1,
-            Map.Entry<String, Language> object2){
-        Language lang1 = object1.getValue();
-        Language lang2 = object2.getValue();
-        return lang1.compareTo(lang2);
-    }
-}
-

@@ -2,6 +2,7 @@ import java.util.concurrent.Semaphore;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 class Language implements Comparable<Language> {
     public Semaphore semaphore = new Semaphore(1);
@@ -54,8 +55,12 @@ class Language implements Comparable<Language> {
         BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
         BigDecimal bdTwo = new BigDecimal(2);
         BigDecimal bdRank = new BigDecimal(rank);
-        BigDecimal d = bdWidth.divide(bdEndpointSize);
-        float r = d.divide(bdTwo).multiply(bdRank).floatValue();
+        BigDecimal d = bdWidth
+            .divide(bdEndpointSize, MathContext.DECIMAL64);
+        float r = d
+            .divide(bdTwo, MathContext.DECIMAL64)
+            .multiply(bdRank)
+            .floatValue();
         float rcos = r * cos(rad);
         float rsin = r * sin(rad);
         x = width/2 + rcos;
