@@ -7,7 +7,9 @@ import java.util.Iterator;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.Map;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.math.BigDecimal;
 
 Map<String, Language> languages = new HashMap<String, Language>();
 Map<String, WebsocketClient> sockets = new HashMap<String, WebsocketClient>();
@@ -27,12 +29,12 @@ void setup(){
 
 void draw(){
     background(255);
+    drawSystem();
 
     /*fill(255, 5);*/
     /*noStroke();*/
     /*rect(0, 0, width, height);*/
 
-    drawSystem();
     reflectRanksOfLanguages();
 
     for(Map.Entry<String, Language> entry : languages.entrySet()) {
@@ -63,30 +65,23 @@ void webSocketEvent(String msg){
 void drawSystem() {
     for(int i = 0; i < endpoints.size() + 30; i++) {
         noFill();
-        float d = width/endpoints.size()*(i+1);
-        if((i+1) % 2 != 0) {
-            continue;
-        } 
+        BigDecimal bdWidth = new BigDecimal(width);
+        BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
+        BigDecimal bdIndex = new BigDecimal(i+1);
+        float d = bdWidth.divide(bdEndpointSize).multiply(bdIndex).floatValue();
         strokeWeight(1);
         ellipse(width/2, height/2, d, d);
     }
 }
 
 void reflectRanksOfLanguages() {
-    /*TreeMap<String, Language> sorted = new TreeMap<String, Language>(languages);*/
-
-    // 順序を保持するためのリスト(Map.entrySetでキーと値の一覧が取得できます)
     List<Map.Entry<String, Language>> mapOrderList = new ArrayList<Map.Entry<String, Language>>(languages.entrySet());
-    // ソートの方法を指定してソート実施
     Collections.sort(mapOrderList, new ValueListComparator());
-
-    /*int i = 0;*/
-    // ソートの結果を出力
     for(int i = 0; i < mapOrderList.size(); i++) {
         Map.Entry<String, Language> entry= mapOrderList.get(i);
         Language lang = entry.getValue();
         lang.changeRank(i+1);
-        println(i+1 + ": " + lang.name + " " + lang.getWeight());
+        /*println(i+1 + ": " + lang.name + " " + lang.getWeight());*/
     }
 }
 

@@ -1,16 +1,13 @@
 import java.util.concurrent.Semaphore;
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 class Language implements Comparable<Language> {
     public Semaphore semaphore = new Semaphore(1);
     public ArrayList<Message> messages = new ArrayList<Message>();
     public float x;
     public float y;
-    /*public float noiseX;*/
-    /*public float noiseY;*/
-    /*public float variationX;*/
-    /*public float variationY;*/
     public float size;
     public String name;
     public float angle;
@@ -20,10 +17,6 @@ class Language implements Comparable<Language> {
     public Language(String langName) {
         name = langName;
         angle = random(0, 360);
-        /*noiseX = random((float)-0.001, (float)0.001);*/
-        /*noiseY = random((float)-0.001, (float)0.001);*/
-        /*variationX = random(1, 100);*/
-        /*variationY = random(1, 100);*/
     }
 
     public int compareTo(Language lang) {
@@ -57,8 +50,12 @@ class Language implements Comparable<Language> {
     public void visualize() {
         angle++;
         float rad = radians(angle);
-        /*float r = width/8*(i+1);*/
-        float r = width/endpoints.size()*rank;
+        BigDecimal bdWidth = new BigDecimal(width);
+        BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
+        BigDecimal bdTwo = new BigDecimal(2);
+        BigDecimal bdRank = new BigDecimal(rank);
+        BigDecimal d = bdWidth.divide(bdEndpointSize);
+        float r = d.divide(bdTwo).multiply(bdRank).floatValue();
         float rcos = r * cos(rad);
         float rsin = r * sin(rad);
         x = width/2 + rcos;
@@ -66,18 +63,11 @@ class Language implements Comparable<Language> {
 
         try {
             semaphore.acquire();
-
-            /*variationX += noiseX;*/
-            /*variationY += noiseY;*/
-            /*x = noise(variationX) * width;*/
-            /*y = noise(variationY) * height;*/
-
             textAlign(CENTER);
             fill(0);
             /*textSize(10);*/
             /*text(name, x, y);*/
             ellipse(x, y, 5, 5);
-
             for(Iterator it = messages.iterator(); it.hasNext();) {
                 Message msg = (Message)it.next();
                 msg.show(x, y);
