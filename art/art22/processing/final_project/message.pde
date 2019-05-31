@@ -17,8 +17,8 @@ class Message {
         rotate(c);
 
         //drawCircle(0, 0, size);
-        fill(255);
-        textSize(10);
+        /*color randomColor = color(random(255), random(255), random(255));*/
+        fill(0, size);
         text(message, 0, 0);
         popMatrix();
     }

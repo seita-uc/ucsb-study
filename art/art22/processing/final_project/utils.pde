@@ -6,16 +6,16 @@ Map<String, String> endpoints = new HashMap<String, String>() {
         put("en", "ws://wikimon.hatnote.com:9000");
         put("de", "ws://wikimon.hatnote.com:9010");
         put("ru", "ws://wikimon.hatnote.com:9020");
-        //put("uk", "ws://wikimon.hatnote.com:9310");
-        //put("ja", "ws://wikimon.hatnote.com:9030");
-        //put("es", "ws://wikimon.hatnote.com:9040");
-        //put("fr", "ws://wikimon.hatnote.com:9050");
-        //put("nl", "ws://wikimon.hatnote.com:9060");
-        //put("it", "ws://wikimon.hatnote.com:9070");
-        //put("sv", "ws://wikimon.hatnote.com:9080");
-        //put("ar", "ws://wikimon.hatnote.com:9090");
-        //put("fa", "ws://wikimon.hatnote.com:9210");
-        //put("he", "ws://wikimon.hatnote.com:9230");
+        put("uk", "ws://wikimon.hatnote.com:9310");
+        /*put("ja", "ws://wikimon.hatnote.com:9030");*/
+        /*put("es", "ws://wikimon.hatnote.com:9040");*/
+        /*put("fr", "ws://wikimon.hatnote.com:9050");*/
+        /*put("nl", "ws://wikimon.hatnote.com:9060");*/
+        /*put("it", "ws://wikimon.hatnote.com:9070");*/
+        /*put("sv", "ws://wikimon.hatnote.com:9080");*/
+        /*put("ar", "ws://wikimon.hatnote.com:9090");*/
+        /*put("fa", "ws://wikimon.hatnote.com:9210");*/
+        /*put("he", "ws://wikimon.hatnote.com:9230");*/
         //put("id", "ws://wikimon.hatnote.com:9100");
         //put("zh", "ws://wikimon.hatnote.com:9240");
         //put("as", "ws://wikimon.hatnote.com:9150");
