@@ -18,7 +18,7 @@ Map<String, WebsocketClient> sockets = new HashMap<String, WebsocketClient>();
 
 void setup(){
     size(900, 900);
-    beginRecord(PDF, String.format("images/final_project__%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));
+    /*beginRecord(PDF, String.format("images/final_project__%s%s%s%s%s.pdf", month(), day(), hour(), minute(), second()));*/
 
     PFont font = createFont("Yu Gothic", 64, true);
     textFont(font);
@@ -32,12 +32,12 @@ void setup(){
 }
 
 void draw(){
-    background(255);
+    /*background(255);*/
     drawSystem();
 
-    /*fill(255, 5);*/
-    /*noStroke();*/
-    /*rect(0, 0, width, height);*/
+    fill(255, 5);
+    noStroke();
+    rect(0, 0, width, height);
 
     reflectRanksOfLanguages();
 
@@ -55,8 +55,8 @@ void draw(){
 }
 
 void mousePressed() {
-    endRecord();
-    exit();
+    /*endRecord();*/
+    /*exit();*/
 }
 
 void webSocketEvent(String msg){
@@ -70,3 +70,16 @@ void webSocketEvent(String msg){
         lang.addMessage(message);
     }
 }
+
+void connectWithLine(String msg){
+    if(msg != "") {
+        MessageContent content = parseMessage(msg);
+        if(content == null){
+            return;
+        }
+        Language lang = languages.get(content.code);
+        Message message = new Message(content.msg, content.size);
+        lang.addMessage(message);
+    }
+}
+

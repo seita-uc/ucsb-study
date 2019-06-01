@@ -143,7 +143,7 @@ Boolean validateMsg(String msg) {
 }
 
 void drawSystem() {
-    for(int i = 0; i < endpoints.size() + 30; i++) {
+    for(int i = 0; i < endpoints.size()+1; i++) {
         noFill();
         BigDecimal bdWidth = new BigDecimal(width);
         BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
@@ -152,7 +152,7 @@ void drawSystem() {
             .divide(bdEndpointSize, MathContext.DECIMAL64)
             .multiply(bdIndex)
             .floatValue();
-        strokeWeight(1);
+        strokeWeight(map(i+1, 1, endpoints.size()+1, 3, 0.01));
         ellipse(width/2, height/2, d, d);
     }
 }

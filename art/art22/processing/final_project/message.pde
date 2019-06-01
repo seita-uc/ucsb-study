@@ -19,7 +19,7 @@ class Message {
         //drawCircle(0, 0, size);
         /*color randomColor = color(random(255), random(255), random(255));*/
         fill(0, size);
-        textSize(5);
+        textSize(10);
         text(message, 0, 0);
         popMatrix();
     }
