@@ -17,7 +17,7 @@ class Message {
         rotate(rad);
 
         fill(0, size);
-        textSize(10);
+        textSize(3);
         text(message, 0, 0);
         popMatrix();
     }
