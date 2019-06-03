@@ -11,13 +11,17 @@ class Language implements Comparable<Language> {
     public float y;
     public float size;
     public String name;
+    public String code;
     public float angle;
+    public float speed;
     public int rank = 1;
     public int weight = 0;
 
-    public Language(String langName) {
+    public Language(String langName, String langCode) {
         name = langName;
+        code = langCode;
         angle = random(0, 360);
+        speed = random(0.1, 2);
     }
 
     public int compareTo(Language lang) {
@@ -48,11 +52,18 @@ class Language implements Comparable<Language> {
         return weight;
     }
 
+    public void connectWithLine(Language lang) {
+        stroke(0);
+        strokeWeight(0.5);
+        line(x, y, lang.x, lang.y);
+    }
+
     public void visualize() {
-        angle++;
+        angle += speed;
         float rad = radians(angle);
+        int totalCircle = endpoints.size()+1;
         BigDecimal bdWidth = new BigDecimal(width);
-        BigDecimal bdEndpointSize = new BigDecimal(endpoints.size());
+        BigDecimal bdEndpointSize = new BigDecimal(totalCircle);
         BigDecimal bdTwo = new BigDecimal(2);
         BigDecimal bdRank = new BigDecimal(rank);
         BigDecimal d = bdWidth
@@ -70,9 +81,7 @@ class Language implements Comparable<Language> {
             semaphore.acquire();
             textAlign(CENTER);
             fill(0);
-            /*textSize(10);*/
-            /*text(name, x, y);*/
-            ellipse(x, y, 5, 5);
+            ellipse(x, y, 3, 3);
             for(Iterator it = messages.iterator(); it.hasNext();) {
                 Message msg = (Message)it.next();
                 msg.show(x, y);
