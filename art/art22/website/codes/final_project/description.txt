@@ -1,0 +1,13 @@
+  My final project is called "language revolutions". 
+  
+  This is a visualization of power relations between languages around the world. I used wikipedia api as a data source of which language is often used on the internet. Using the data from this api with websocket enabled the visualization to change in real-time as the wikipedia is updated in each language.
+
+  As the update is made on the wikipedia, the information of the update is sent to my processing program and it is parsed into more understandable form and finally shown on the processing screen as a sentence rotating on the dot revolving around the circle. 
+
+  Each language is represented as a dot revolving around the circle. I was inspired by the solar system and the more frequently the wikipedia gets updated in a certain language, the more the dot of the language gets closer to the center. The idea is that the more closer to the center the dot is, the shorter they revolve, which means they are less influenced. On the other hand, those less frequently updated languages need to revolve longer than the other languages which means they are more significantly influenced by the languages revolving in the center. 
+
+  The lines connecting each dot of language stand for the interrelationship between languages.
+
+  This project is for every language speaker to understand how each language has different power and priviledge in the world, especially on the internet. As the visualization suggests that only in specific languages the wikipedia is updated, the disparity of richness in information on the internet is significant between each of the languages. This linguistic hegemonic structure could be a bigger problem in this rapidly growing information society because the accessibility to the larger information is the key to survive.
+
+  I hope this work can bring attention to this linguistic and social issue which is as English speakers quite important to notice.
